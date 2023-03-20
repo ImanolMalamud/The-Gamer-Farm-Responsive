@@ -1,13 +1,18 @@
-import { Divider, ListItemButton, ListItemIcon } from "@mui/material";
-import { ActionIconsContainerDesktop, ActionIconsContainerMobile, MyList } from "../../styles/appbar";
-import PersonIcon from "@mui/icons-material/Person";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import { Colors } from "../../styles/theme";
+import { Divider, ListItemButton, ListItemIcon } from "@mui/material"
+import {
+  ActionIconsContainerDesktop,
+  ActionIconsContainerMobile,
+  MyList,
+} from "../../styles/appbar"
+import PersonIcon from "@mui/icons-material/Person"
+import FavoriteIcon from "@mui/icons-material/Favorite"
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart"
+import { Colors } from "../../styles/theme"
 
 export default function Actions({ matches }) {
-
-  const Component = matches ? ActionIconsContainerMobile : ActionIconsContainerDesktop;
+  const Component = matches
+    ? ActionIconsContainerMobile
+    : ActionIconsContainerDesktop
 
   return (
     <Component>
@@ -62,5 +67,5 @@ export default function Actions({ matches }) {
         <Divider orientation="vertical" flexItem />
       </MyList>
     </Component>
-  );
+  )
 }

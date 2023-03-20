@@ -1,6 +1,14 @@
 import logo from "./logo.svg"
 import "./App.css"
-import { Container, Typography, Box, Stack, Grid, Button } from "@mui/material"
+import {
+  Container,
+  Typography,
+  Box,
+  Stack,
+  Grid,
+  Button,
+  createTheme,
+} from "@mui/material"
 import Appbar from "./components/appbar"
 import { ThemeProvider } from "@mui/system"
 import theme from "./styles/theme"
@@ -11,19 +19,25 @@ import Footer from "./components/footer"
 import AppDrawer from "./components/drawer"
 import Promotions from "./components/promotions"
 import SearchBox from "./components/search"
-import { useEffect } from "react"
+import { useEffect, useMemo } from "react"
+import { themeSettings } from "theme"
+import { useSelector } from "react-redux"
 
 function App() {
   useEffect(() => {
     document.title = "React Material UI - Home"
   }, [])
+
+  const mode = useSelector(state => state.global.mode)
+  const theme = useMemo(() => createTheme(themeSettings(mode)), [mode])
   return (
     <ThemeProvider theme={theme}>
       <Container
         disableGutters
         maxWidth="xl"
         sx={{
-          background: "#0f0e17",
+          background: theme.palette.primary[500],
+          color: theme.palette.primary[100],
         }}
       >
         <Stack>

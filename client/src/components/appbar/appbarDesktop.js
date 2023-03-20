@@ -7,6 +7,7 @@ import {
   ListItemText,
   Stack,
   Typography,
+  useTheme,
 } from "@mui/material"
 import {
   AppbarActionIcons,
@@ -22,20 +23,23 @@ import Actions from "./actions"
 import { useUIContext } from "../../context/ui"
 export default function AppbarDesktop({ matches }) {
   const { setShowSearchBox } = useUIContext()
+  const theme = useTheme()
 
   return (
-    <AppbarContainer>
-      <Box m="5px 10px">
+    <AppbarContainer
+      sx={{
+        backgroundColor: theme.palette.primary[500],
+        color: theme.palette.secondary[100],
+      }}
+    >
+      <Box m="0 50px 0 10px">
         <img
           src="/images/navbar/logoGamingFarm.png"
           alt="The Gamer Farm Logo"
           style={{ width: "100px" }}
         />
       </Box>
-      <MyList type="row" sx={{ color: "white" }}>
-        <ListItemIcon>
-          <SearchIcon />
-        </ListItemIcon>
+      <MyList type="row">
         <ListItemText primary="Home" />
         <ListItemText primary="Categories" />
         <ListItemText primary="Products" />

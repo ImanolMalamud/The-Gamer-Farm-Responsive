@@ -14,8 +14,16 @@ export default function Banner() {
   const matches = useMediaQuery(theme.breakpoints.down("md"))
 
   return (
-    <BannerContainer>
-      <BannerImage src="/images/banner/control.png" sx={{ width: "600px" }} />
+    <BannerContainer
+      sx={{
+        backgroundColor: theme.palette.primary[500],
+        color: theme.palette.primary[100],
+      }}
+    >
+      <BannerImage
+        src="/images/banner/control.png"
+        sx={{ width: "600px", transform: "translateY(-50px)" }}
+      />
       <BannerContent>
         <Typography variant="h4">
           Enciende tu experiencia de juego con nuestros productos
@@ -28,7 +36,16 @@ export default function Banner() {
           informarte de las novedades relacionadas al Mundo Gamer”
         </BannerDescription>
 
-        <BannerShopButton color="primary">Productos</BannerShopButton>
+        <BannerShopButton
+          sx={{
+            backgroundColor: theme.palette.secondary[500],
+            "&:hover": {
+              backgroundColor: theme.palette.secondary[700],
+            },
+          }}
+        >
+          Productos
+        </BannerShopButton>
       </BannerContent>
     </BannerContainer>
   )
