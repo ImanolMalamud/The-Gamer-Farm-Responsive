@@ -36,7 +36,7 @@ function App() {
         disableGutters
         maxWidth="xl"
         sx={{
-          background: theme.palette.primary[500],
+          background: theme.palette.primary[700],
           color: theme.palette.primary[100],
         }}
       >

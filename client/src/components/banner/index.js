@@ -16,7 +16,7 @@ export default function Banner() {
   return (
     <BannerContainer
       sx={{
-        backgroundColor: theme.palette.primary[500],
+        backgroundColor: theme.palette.primary[700],
         color: theme.palette.primary[100],
       }}
     >

@@ -28,8 +28,8 @@ export default function AppbarDesktop({ matches }) {
   return (
     <AppbarContainer
       sx={{
-        backgroundColor: theme.palette.primary[500],
-        color: theme.palette.secondary[100],
+        backgroundColor: theme.palette.primary[800],
+        color: theme.palette.primary[100],
       }}
     >
       <Box m="0 50px 0 10px">

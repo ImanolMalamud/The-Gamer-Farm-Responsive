@@ -10,7 +10,7 @@ export default function AppbarMobile({ matches }) {
   const theme = useTheme()
 
   return (
-    <AppbarContainer sx={{ backgroundColor: theme.palette.primary[100] }}>
+    <AppbarContainer sx={{ backgroundColor: theme.palette.primary[800] }}>
       <IconButton onClick={() => setDrawerOpen(true)}>
         <MenuIcon />
       </IconButton>
