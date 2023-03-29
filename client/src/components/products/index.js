@@ -1,15 +1,15 @@
-import { Box, Button, Container, Grid } from "@mui/material"
-import { products } from "../../data"
-import SingleProduct from "./SingleProduct"
-import { useTheme } from "@mui/material/styles"
-import { useMediaQuery } from "@mui/material"
-import SingleProductDesktop from "./SingleProductDesktop"
+import { Box, Button, Container, Grid } from "@mui/material";
+import { gameProducts } from "../../data/productos.js";
+import SingleProduct from "./SingleProduct";
+import { useTheme } from "@mui/material/styles";
+import { useMediaQuery } from "@mui/material";
+import SingleProductDesktop from "./SingleProductDesktop";
 
 export default function Products() {
-  const theme = useTheme()
-  const matches = useMediaQuery(theme.breakpoints.down("md"))
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.down("md"));
 
-  const renderProducts = products.map(product => (
+  const renderProducts = gameProducts.map((product) => (
     <Grid
       item
       key={product.id}
@@ -26,18 +26,18 @@ export default function Products() {
         <SingleProductDesktop product={product} matches={matches} />
       )}
     </Grid>
-  ))
+  ));
   return (
-    <Container>
+    <Container sx={{ pading: `30px 4px 25px 4px`, mt: "20px", mb: "20px" }}>
       <Grid
         container
-        spacing={{ xs: 2, md: 3 }}
+        spacing={{ xs: 8, md: 6 }}
         justifyContent="center"
-        sx={{ margin: `20px 4px 10px 4px` }}
-        columns={{ xs: 4, sm: 8, md: 12 }}
+        // sx={{ margin: `80px 4px 10px 4px` }}
+        columns={{ xs: 1, sm: 8, md: 12 }}
       >
         {renderProducts}
       </Grid>
     </Container>
-  )
+  );
 }

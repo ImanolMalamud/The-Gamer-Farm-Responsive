@@ -11,7 +11,7 @@ const sequelize = DB_DEPLOY
       native: false,
     })
   : new Sequelize(
-      `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/TheGamingFarm`,
+      `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`,
       {
         logging: false,
         native: false,
@@ -45,13 +45,16 @@ sequelize.models = Object.fromEntries(capsEntries)
 
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
-const { Product, Category } = sequelize.models
+const { Product, Category, Console } = sequelize.models
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
 
 Product.belongsToMany(Category, { through: "Product_Category" })
 Category.belongsToMany(Product, { through: "Product_Category" })
+
+Product.belongsToMany(Console, { through: "Product_Console" })
+Console.belongsToMany(Product, { through: "Product_Console" })
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');

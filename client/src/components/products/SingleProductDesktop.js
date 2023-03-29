@@ -7,6 +7,7 @@ import {
   ProductAddToCart,
   ProductFavButton,
   ProductImage,
+  ProductImageContainer,
   ProductMetaWrapper,
 } from "../../styles/product";
 import { Stack, Tooltip, Typography } from "@mui/material";
@@ -32,7 +33,9 @@ export default function SingleProductDesktop({ product, matches }) {
   return (
     <>
       <Product onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-        <ProductImage src={product.image} />
+        <ProductImageContainer>
+          <ProductImage src={product.image} />
+        </ProductImageContainer>
         <ProductFavButton isfav={0}>
           <FavoriteIcon />
         </ProductFavButton>
