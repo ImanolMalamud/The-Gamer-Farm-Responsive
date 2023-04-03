@@ -21,6 +21,7 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Home from "components/home";
 import Layout from "components/layout";
 import { UIProvider } from "context/ui";
+import Landing from "components/landing";
 
 function App() {
   const mode = useSelector((state) => state.global.mode);
@@ -33,7 +34,8 @@ function App() {
           <Routes>
             {/** Layout contains the Navbar and Sidebar. It will always render in our App. The components contained in the parent's route -in this case, with Layout element)- will be used in the Layout component as an Outlet component. */}
             <Route element={<Layout />}>
-              <Route path="/home" element={<Home />} />
+              <Route path="/" element={<Banner />} />
+              <Route path="/products" element={<Home />} />
             </Route>
           </Routes>
         </ThemeProvider>

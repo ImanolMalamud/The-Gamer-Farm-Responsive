@@ -1,0 +1,76 @@
+.cardNews {
+  width: 250px;
+  height: 354px;
+  border-radius: 20px;
+  background: #f5f5f5;
+  position: relative;
+  align-items: center;
+  padding: 2rem;
+  border: 4px solid #c3c6ce;
+  transition: 0.5s ease-out;
+  margin: 20px;
+  overflow: hidden;
+}
+
+.card-details {
+  color: black;
+  gap: 0em;
+  display: grid;
+  place-content: center;
+  justify-content: center;
+  align-items: center;
+  overflow-wrap: hidden;
+}
+
+.card-button {
+  transform: translate(-50%, 125%);
+  width: 60%;
+  border-radius: 1rem;
+  border: none;
+  background-color: #0218ff;
+  color: #fff;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  position: absolute;
+  left: 50%;
+  bottom: 17px;
+  opacity: 0;
+  transition: 0.3s ease-out;
+}
+
+.text-body {
+  color: rgb(134, 134, 134);
+}
+
+/*Text*/
+.text-title {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+/*Hover*/
+.cardNews:hover {
+  border-color: #0218ff;
+  box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
+}
+
+.cardNews:hover .card-button {
+  transform: translate(-50%, 50%);
+  opacity: 1;
+}
+
+@media (max-width: 767px) {
+  .cardNews {
+    width: 20px;
+    height: 354px;
+    border-radius: 20px;
+    background: #f5f5f5;
+    position: relative;
+    align-items: center;
+    padding: 2rem;
+    border: 4px solid #c3c6ce;
+    transition: 0.5s ease-out;
+    overflow: visible;
+    margin: 0px;
+  }
+}

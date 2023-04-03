@@ -22,14 +22,8 @@ const Home = () => {
       }}
     >
       <Stack>
-        {/* <Appbar /> */}
-        {/* <Banner /> */}
-        {/* <Promotions /> */}
         <Filters />
         <SearchBox />
-        {/* <Box display="flex" justifyContent="center" sx={{ p: 4 }}>
-              <Typography variant="h4">Productos</Typography>
-            </Box> */}
         <Products />
         <Footer />
         <AppDrawer />

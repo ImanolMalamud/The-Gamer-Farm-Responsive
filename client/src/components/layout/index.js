@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { useGetUserQuery } from "state/api";
 import Appbar from "components/appbar";
 import ErrorBoundary from "components/errorboundary";
+import Footer from "components/footer";
 
 const Layout = () => {
   const isNonMobile = useMediaQuery("(min-width: 600px)");
@@ -20,6 +21,7 @@ const Layout = () => {
         <ErrorBoundary fallback="There was an error.">
           <Outlet />
         </ErrorBoundary>
+        <Footer />
       </Box>
     </Box>
   );
