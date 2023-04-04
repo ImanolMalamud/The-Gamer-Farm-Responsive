@@ -10,6 +10,8 @@ import {
 } from "../../styles/banner";
 import News from "components/news/News";
 import ResponsiveSlider from "components/news";
+import GamingNewsBtn from "components/news/GamingNewsBtn";
+import { Link } from "react-router-dom";
 
 export default function Banner() {
   const theme = useTheme();
@@ -25,6 +27,7 @@ export default function Banner() {
       >
         <BannerImage
           src="/images/banner/control.png"
+          alt="logo"
           sx={{ width: "600px", transform: "translateY(-50px)" }}
         />
         <BannerContent>
@@ -47,10 +50,17 @@ export default function Banner() {
               },
             }}
           >
-            Productos
+            <Link
+              to="/products"
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
+              Products
+            </Link>
           </BannerShopButton>
         </BannerContent>
       </BannerContainer>
+
+      <GamingNewsBtn />
 
       <ResponsiveSlider />
       {/* <News /> */}

@@ -1,10 +1,17 @@
 import Carousel from "react-material-ui-carousel";
-import { Paper, Button, Box, useMediaQuery } from "@mui/material";
+import {
+  Paper,
+  Button,
+  Box,
+  useMediaQuery,
+  Card,
+  CardContent,
+  Typography,
+} from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useTheme } from "@mui/material/styles";
 
 import axios from "axios";
-import theme from "styles/theme";
 
 function ResponsiveSlider(props) {
   const theme = useTheme();
@@ -41,7 +48,12 @@ function ResponsiveSlider(props) {
   }, []);
 
   return (
-    <Box display="flex" justifyContent="center" mb="25px">
+    <Box
+      id="gaming-news-section"
+      display="flex"
+      justifyContent="center"
+      mb="25px"
+    >
       <Carousel
         sx={{
           backgroundColor: theme.palette.primary[700],
@@ -66,27 +78,11 @@ function ResponsiveSlider(props) {
           },
         }}
       >
-        {news.map((item, i) => {
-          return matches ? (
-            <Box display="flex" columnGap="20px" margin="10px">
-              <Item key={i} item={news[i]} />
-            </Box>
-          ) : (
-            <Box
-              display="flex"
-              columnGap="20px"
-              margin="10px"
-              backgroundColor={theme.palette.primary[600]}
-            >
-              <Item key={i} item={news[i]} />
-              {news[i + 1] ? (
-                <Item key={i} item={news[i + 1]} />
-              ) : (
-                <Item key={i} item={news[0]} />
-              )}
-            </Box>
-          );
-        })}
+        {news.map((item, i) => (
+          <Box key={i} p={1}>
+            <Item key={i} item={item} />
+          </Box>
+        ))}
       </Carousel>
     </Box>
   );
@@ -96,51 +92,62 @@ function Item(props) {
   const theme = useTheme();
 
   return (
-    <a
-      className="CheckButton"
-      href={props.item.link}
-      target="_blank"
-      style={{
-        color: theme.palette.primary[200],
-        backgroundColor: theme.palette.primary[700],
-      }}
-    >
-      <Paper
-        sx={{
-          backgroundImage: props.item.imageUrl && `url(${props.item.imageUrl})`,
-          backgroundSize: "cover",
-          height: "450px",
+    <Card>
+      <a
+        className="CheckButton"
+        href={props.item.link}
+        target="_blank"
+        style={{
+          color: theme.palette.primary[200],
+          backgroundColor: theme.palette.primary[700],
         }}
       >
-        <h2
-          style={{
-            backgroundColor: theme.palette.grey[300],
-            color: theme.palette.primary[400],
+        <CardContent
+          sx={{
+            backgroundImage:
+              props.item.imageUrl && `url(${props.item.imageUrl})`,
+            backgroundSize: "cover",
+            height: "450px",
           }}
         >
-          {props.item.title}
-        </h2>
+          <Typography
+            variant="h4"
+            component="h2"
+            gutterBottom
+            sx={{
+              color: theme.palette.primary[700],
+              backgroundColor: theme.palette.primary[100],
+              textAlign: "center",
+              padding: "2px",
+            }}
+          >
+            {props.item.title}
+          </Typography>
+          {/* <h2
+            style={{
+              backgroundColor: theme.palette.secondary[100],
+              color: theme.palette.secondary[700],
+              padding: "3px",
+              textAlign: "center",
+            }}
+          >
+            {props.item.title}
+          </h2> */}
 
-        <p>{props.item.creator}</p>
-        <p
-          style={{
-            backgroundColor: theme.palette.grey[500],
-            color: theme.palette.secondary[900],
-            position: "absolute",
-            bottom: 0,
-          }}
-        >
-          {props.item.pubDate}
-        </p>
-        {/* {props.item.imageUrl && (
-          <img
-            src={props.item.imageUrl}
-            alt={props.item.title}
-            style={{ maxWidth: "30vw" }}
-          />
-        )} */}
-      </Paper>
-    </a>
+          <p>{props.item.creator}</p>
+          <p
+            style={{
+              backgroundColor: theme.palette.grey[500],
+              color: theme.palette.secondary[900],
+              position: "absolute",
+              bottom: 0,
+            }}
+          >
+            {props.item.pubDate}
+          </p>
+        </CardContent>
+      </a>
+    </Card>
   );
 }
 

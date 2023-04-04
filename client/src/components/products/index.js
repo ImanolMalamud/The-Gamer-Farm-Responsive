@@ -28,12 +28,12 @@ export default function Products() {
     </Grid>
   ));
   return (
-    <Container sx={{ pading: `30px 4px 25px 4px`, mt: "20px", mb: "20px" }}>
+    <Container sx={{ pading: `25px 4px 25px 4px`, mt: "80px", mb: "20px" }}>
       <Grid
         container
         spacing={{ xs: 8, md: 6 }}
         justifyContent="center"
-        // sx={{ margin: `80px 4px 10px 4px` }}
+        sx={{ backgroundColor: "grey" }}
         columns={{ xs: 1, sm: 8, md: 12 }}
       >
         {renderProducts}

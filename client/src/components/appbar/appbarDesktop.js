@@ -8,22 +8,23 @@ import {
   Stack,
   Typography,
   useTheme,
-} from "@mui/material"
+} from "@mui/material";
 import {
   AppbarActionIcons,
   AppbarContainer,
   AppbarHeader,
   MyList,
-} from "../../styles/appbar"
-import PersonIcon from "@mui/icons-material/Person"
-import FavoriteIcon from "@mui/icons-material/Favorite"
-import SearchIcon from "@mui/icons-material/Search"
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart"
-import Actions from "./actions"
-import { useUIContext } from "../../context/ui"
+} from "../../styles/appbar";
+import PersonIcon from "@mui/icons-material/Person";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import SearchIcon from "@mui/icons-material/Search";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import Actions from "./actions";
+import { useUIContext } from "../../context/ui";
+import { Link } from "react-router-dom";
 export default function AppbarDesktop({ matches }) {
-  const { setShowSearchBox } = useUIContext()
-  const theme = useTheme()
+  const { setShowSearchBox } = useUIContext();
+  const theme = useTheme();
 
   return (
     <AppbarContainer
@@ -40,11 +41,53 @@ export default function AppbarDesktop({ matches }) {
         />
       </Box>
       <MyList type="row">
-        <ListItemText primary="Home" />
-        <ListItemText primary="Categories" />
-        <ListItemText primary="Products" />
-        <ListItemText primary="About us" />
-        <ListItemText primary="Contact us" />
+        <ListItemText
+          primary={
+            <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
+              Home
+            </Link>
+          }
+        />
+        {/* <ListItemText
+          primary={
+            <Link
+              to="/categories"
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
+              Categories
+            </Link>
+          }
+        /> */}
+        <ListItemText
+          primary={
+            <Link
+              to="/products"
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
+              Productos
+            </Link>
+          }
+        />
+        <ListItemText
+          primary={
+            <Link
+              to="/about"
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
+              Sobre Nosotros
+            </Link>
+          }
+        />
+        <ListItemText
+          primary={
+            <Link
+              to="/contact"
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
+              Contactanos
+            </Link>
+          }
+        />
         <ListItemButton onClick={() => setShowSearchBox(true)}>
           <ListItemIcon>
             <SearchIcon />
@@ -53,5 +96,5 @@ export default function AppbarDesktop({ matches }) {
       </MyList>
       <Actions matches={matches} />
     </AppbarContainer>
-  )
+  );
 }

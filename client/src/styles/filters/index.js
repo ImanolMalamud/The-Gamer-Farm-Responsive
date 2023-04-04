@@ -16,7 +16,7 @@ export const FiltersContainer = styled(Box)(({ theme }) => ({
 export const FilterButton = styled(Typography)(({ theme }) => ({
   fontFamily: '"Press Start 2P"',
   [theme.breakpoints.up("md")]: {
-    fontSize: "1.5rem",
+    fontSize: "1rem",
   },
   color: Colors.white,
   fontSize: "1rem",

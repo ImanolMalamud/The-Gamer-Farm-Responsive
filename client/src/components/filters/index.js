@@ -1,4 +1,4 @@
-import { Slide, Typography } from "@mui/material";
+import { Divider, Slide, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { useEffect, useRef, useState } from "react";
 import { FilterButton, FiltersContainer } from "styles/filters";
@@ -11,9 +11,18 @@ export default function Promotions() {
 
   return (
     <FiltersContainer>
+      <Divider orientation="vertical" flexItem />
+
       <FilterButton>CONSOLAS</FilterButton>
+      <Divider orientation="vertical" flexItem />
       <FilterButton>JUEGOS</FilterButton>
+      <Divider orientation="vertical" flexItem />
+
       <FilterButton>MANDOS</FilterButton>
+      <Divider orientation="vertical" flexItem />
+
+      <FilterButton>PRECIO</FilterButton>
+      <Divider orientation="vertical" flexItem />
     </FiltersContainer>
   );
 }
