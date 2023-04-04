@@ -10,7 +10,7 @@ import {
   ProductImageContainer,
   ProductMetaWrapper,
 } from "../../styles/product";
-import { Stack, Tooltip, Typography } from "@mui/material";
+import { Stack, Tooltip, Typography, useTheme } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
 import FitScreenIcon from "@mui/icons-material/FitScreen";
@@ -19,6 +19,8 @@ import ProductDetail from "../productdetail";
 import ProductMeta from "./ProductMeta";
 
 export default function SingleProductDesktop({ product, matches }) {
+  const theme = useTheme();
+
   const [ProductDetailDialog, showProductDetailDialog, closeProductDialog] =
     useDialogModal(ProductDetail);
 
@@ -32,11 +34,15 @@ export default function SingleProductDesktop({ product, matches }) {
   };
   return (
     <>
-      <Product onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-        <ProductImageContainer>
-          <ProductImage src={product.image} />
+      <Product
+        theme={theme}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
+        <ProductImageContainer theme={theme}>
+          <ProductImage theme={theme} src={product.image} />
         </ProductImageContainer>
-        <ProductFavButton isfav={0}>
+        <ProductFavButton theme={theme} isfav={0}>
           <FavoriteIcon />
         </ProductFavButton>
         {(showOptions || matches) && (
@@ -44,14 +50,17 @@ export default function SingleProductDesktop({ product, matches }) {
             Add to cart
           </ProductAddToCart>
         )}
-        <ProductActionsWrapper show={showOptions || matches}>
+        <ProductActionsWrapper theme={theme} show={showOptions || matches}>
           <Stack direction={matches ? "row" : "column"}>
-            <ProductActionButton>
+            <ProductActionButton theme={theme}>
               <Tooltip placement="left" title="share this product">
                 <ShareIcon color="primary" />
               </Tooltip>
             </ProductActionButton>
-            <ProductActionButton onClick={() => showProductDetailDialog()}>
+            <ProductActionButton
+              theme={theme}
+              onClick={() => showProductDetailDialog()}
+            >
               <Tooltip placement="left" title="Full view">
                 <FitScreenIcon color="primary" />
               </Tooltip>

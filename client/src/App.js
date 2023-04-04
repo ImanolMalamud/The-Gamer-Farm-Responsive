@@ -22,6 +22,7 @@ import Home from "components/home";
 import Layout from "components/layout";
 import { UIProvider } from "context/ui";
 import Landing from "components/landing";
+import Products from "components/products";
 
 function App() {
   const mode = useSelector((state) => state.global.mode);
@@ -34,8 +35,8 @@ function App() {
           <Routes>
             {/** Layout contains the Navbar and Sidebar. It will always render in our App. The components contained in the parent's route -in this case, with Layout element)- will be used in the Layout component as an Outlet component. */}
             <Route element={<Layout />}>
-              <Route path="/" element={<Banner />} />
-              <Route path="/products" element={<Home />} />
+              <Route exact path="/" element={<Banner />} />
+              <Route path="/products" element={<Products />} />
             </Route>
           </Routes>
         </ThemeProvider>

@@ -10,34 +10,27 @@ export default function Products() {
   const matches = useMediaQuery(theme.breakpoints.down("md"));
 
   const renderProducts = gameProducts.map((product) => (
-    <Grid
-      item
-      key={product.id}
-      xs={2}
-      sm={4}
-      md={4}
-      display="flex"
-      flexDirection={"column"}
-      alignItems="center"
-    >
+    <Box display="flex" flexDirection="column">
       {matches ? (
         <SingleProduct product={product} matches={matches} />
       ) : (
         <SingleProductDesktop product={product} matches={matches} />
       )}
-    </Grid>
+    </Box>
   ));
   return (
-    <Container sx={{ pading: `25px 4px 25px 4px`, mt: "80px", mb: "20px" }}>
-      <Grid
-        container
-        spacing={{ xs: 8, md: 6 }}
+    <Box>
+      <Box
+        display="flex"
+        flexWrap="wrap"
+        columnGap="70px"
+        rowGap="40px"
         justifyContent="center"
-        sx={{ backgroundColor: "grey" }}
-        columns={{ xs: 1, sm: 8, md: 12 }}
+        alignItems="center"
+        padding="50px 20px 30px 20px"
       >
-        {renderProducts}
-      </Grid>
-    </Container>
+        <>{renderProducts}</>
+      </Box>
+    </Box>
   );
 }

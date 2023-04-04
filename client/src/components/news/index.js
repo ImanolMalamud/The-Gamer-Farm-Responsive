@@ -79,9 +79,7 @@ function ResponsiveSlider(props) {
         }}
       >
         {news.map((item, i) => (
-          <Box key={i} p={1}>
-            <Item key={i} item={item} />
-          </Box>
+          <Item key={i} item={item} />
         ))}
       </Carousel>
     </Box>
@@ -115,25 +113,14 @@ function Item(props) {
             component="h2"
             gutterBottom
             sx={{
-              color: theme.palette.primary[700],
-              backgroundColor: theme.palette.primary[100],
+              color: theme.palette.primary[800],
+              backgroundColor: theme.palette.primary[300],
               textAlign: "center",
               padding: "2px",
             }}
           >
             {props.item.title}
           </Typography>
-          {/* <h2
-            style={{
-              backgroundColor: theme.palette.secondary[100],
-              color: theme.palette.secondary[700],
-              padding: "3px",
-              textAlign: "center",
-            }}
-          >
-            {props.item.title}
-          </h2> */}
-
           <p>{props.item.creator}</p>
           <p
             style={{

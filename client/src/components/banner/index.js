@@ -12,17 +12,28 @@ import News from "components/news/News";
 import ResponsiveSlider from "components/news";
 import GamingNewsBtn from "components/news/GamingNewsBtn";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import backgroundBannerLight from "../../images/background-banner-light.jpg";
+import backgroundBannerDark from "../../images/background-banner-dark.webp";
 
 export default function Banner() {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down("md"));
+  const mode = useSelector((state) => state.global.mode);
 
   return (
     <>
       <BannerContainer
         sx={{
-          backgroundColor: theme.palette.primary[700],
+          // backgroundColor: theme.palette.primary[700],
           color: theme.palette.primary[100],
+          backgroundImage:
+            mode === "light"
+              ? `url(${backgroundBannerLight})`
+              : `url(${backgroundBannerDark})`,
+          backgroundSize: "cover",
+          backgroundPositionX: "center",
+          backgroundRepeat: "no-repeat",
         }}
       >
         <BannerImage
@@ -44,7 +55,7 @@ export default function Banner() {
 
           <BannerShopButton
             sx={{
-              backgroundColor: theme.palette.secondary[500],
+              backgroundColor: theme.palette.secondary[400],
               "&:hover": {
                 backgroundColor: theme.palette.secondary[700],
               },
@@ -54,7 +65,7 @@ export default function Banner() {
               to="/products"
               style={{ textDecoration: "none", color: "inherit" }}
             >
-              Products
+              Productos
             </Link>
           </BannerShopButton>
         </BannerContent>
