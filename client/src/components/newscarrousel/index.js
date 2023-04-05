@@ -114,13 +114,15 @@ function Item(props) {
           sx={{
             backgroundImage:
               props.item.imageUrl && `url(${props.item.imageUrl})`,
-            backgroundSize: "cover",
+            backgroundSize: "100%",
+            backgroundPositionY: "75px",
+            backgroundRepeat: "no-repeat",
             height: "450px",
           }}
         >
           <Typography
             variant="h4"
-            component="h2"
+            // component="h2"
             // gutterBottom
             sx={{
               color: theme.palette.primary[700],
@@ -138,10 +140,10 @@ function Item(props) {
           <p>{props.item.creator}</p>
           <p
             style={{
-              backgroundColor: theme.palette.grey[500],
-              color: theme.palette.secondary[900],
+              backgroundColor: theme.palette.grey[400],
+              color: "black",
               position: "absolute",
-              bottom: 0,
+              bottom: "80px",
             }}
           >
             {props.item.pubDate}
