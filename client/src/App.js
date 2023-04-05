@@ -8,6 +8,7 @@ import {
   Button,
   createTheme,
   CssBaseline,
+  useMediaQuery,
 } from "@mui/material";
 import Appbar from "./components/appbar";
 import { ThemeProvider } from "@mui/system";
@@ -24,10 +25,13 @@ import { UIProvider } from "context/ui";
 import Landing from "components/landing";
 import Products from "components/products";
 import "./App.css";
+import AppDrawer from "components/drawer";
+import SearchBox from "components/search";
 
 function App() {
   const mode = useSelector((state) => state.global.mode);
   const theme = useMemo(() => createTheme(themeSettings(mode)), [mode]);
+  const isSmallScreen = useMediaQuery("(max-width: 900px)");
 
   return (
     <Box className="app">
@@ -41,6 +45,8 @@ function App() {
               <Route path="/products" element={<Products />} />
             </Route>
           </Routes>
+          {isSmallScreen && <AppDrawer />}
+          <SearchBox />
         </ThemeProvider>
       </BrowserRouter>
     </Box>
