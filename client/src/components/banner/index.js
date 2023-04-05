@@ -1,4 +1,4 @@
-import { Button, Typography, useMediaQuery } from "@mui/material";
+import { Box, Button, Typography, useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/system";
 import {
   BannerContainer,
@@ -15,18 +15,28 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import backgroundBannerLight from "../../images/background-banner-light.jpg";
 import backgroundBannerDark from "../../images/background-banner-dark.webp";
+import { Image } from "@mui/icons-material";
 
 export default function Banner() {
   const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.down("md"));
+
+  // Screen size
+  const isMediumScreen = useMediaQuery("(max-width: 1050px)");
+  const isSmallScreen = useMediaQuery("(max-width: 768px)");
+
   const mode = useSelector((state) => state.global.mode);
 
   return (
     <>
-      <BannerContainer
+      <Box
         sx={{
-          // backgroundColor: theme.palette.primary[700],
+          display: "flex",
+          flexDirection: isSmallScreen ? "column" : "row",
+          alignItems: "center",
+          justifyContent: "center",
+          height: isSmallScreen ? "contain" : "70vh",
           color: theme.palette.primary[100],
+          pb: "20px",
           backgroundImage:
             mode === "light"
               ? `url(${backgroundBannerLight})`
@@ -36,25 +46,42 @@ export default function Banner() {
           backgroundRepeat: "no-repeat",
         }}
       >
-        <BannerImage
+        <img
           src="/images/banner/control.png"
-          alt="logo"
-          sx={{ width: "600px", transform: "translateY(-50px)" }}
+          style={{
+            paddingLeft: "10px",
+            width: isMediumScreen ? "400px" : "500px",
+          }}
         />
-        <BannerContent>
-          <Typography variant="h4">
+        <Box
+          maxHeight="80%"
+          display="flex"
+          flexDirection="column"
+          alignItems="center"
+          justifyContent="center"
+          textAlign="center"
+          rowGap="25px"
+          padding="0 20px 0 20px"
+        >
+          <Typography variant={isMediumScreen ? "h3" : "h2"}>
             Enciende tu experiencia de juego con nuestros productos
           </Typography>
-          {/* <BannerTitle variant="h2">The Gaming Farm</BannerTitle> */}
-
-          <BannerDescription variant="subtitle">
+          <Typography variant={isMediumScreen ? "h4" : "h3"}>
             "Bienvenidos a TheGamingFarm! Aquí podrás encontrar un cátalogo
             completo de las consolas más icónicas de las últimas décadas e
             informarte de las novedades relacionadas al Mundo Gamer”
-          </BannerDescription>
-
-          <BannerShopButton
+          </Typography>
+          <Button
             sx={{
+              padding: "20px 0px",
+              color: theme.palette.grey[100],
+              fontWeight: "bold",
+              fontSize: "20px",
+              width: "300px",
+              [theme.breakpoints.down("sm")]: {
+                padding: "10px 0px",
+                fontSize: "14px",
+              },
               backgroundColor: theme.palette.secondary[400],
               "&:hover": {
                 backgroundColor: theme.palette.secondary[700],
@@ -67,9 +94,9 @@ export default function Banner() {
             >
               Productos
             </Link>
-          </BannerShopButton>
-        </BannerContent>
-      </BannerContainer>
+          </Button>
+        </Box>
+      </Box>
 
       <GamingNewsBtn />
 
