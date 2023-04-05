@@ -4,7 +4,6 @@ import SearchBox from "../search";
 import Products from "../products";
 import Footer from "../footer";
 import AppDrawer from "../drawer";
-import { UIProvider } from "context/ui";
 import { Container, createTheme, Stack } from "@mui/material";
 import { useSelector } from "react-redux";
 import { themeSettings } from "theme";

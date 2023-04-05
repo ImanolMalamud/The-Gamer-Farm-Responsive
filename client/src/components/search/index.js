@@ -3,7 +3,8 @@ import { Box, styled } from "@mui/system";
 import { Colors } from "../../styles/theme";
 import SearchIcon from "@mui/icons-material/Search";
 import CloseIcon from "@mui/icons-material/Close";
-import { useUIContext } from "context/ui";
+import { useDispatch, useSelector } from "react-redux";
+import { setShowSearchBox } from "state";
 
 const SearchBoxContainer = styled(Box)(({ theme }) => ({
   position: "absolute",
@@ -37,7 +38,9 @@ const SearchField = styled(TextField)(({ theme }) => ({
 }));
 
 export default function SearchBox() {
-  const { showSearchBox, setShowSearchBox } = useUIContext();
+  const showSearchBox = useSelector((state) => state.global.showSearchBox);
+
+  const dispatch = useDispatch();
 
   return (
     <Slide direction="down" in={showSearchBox} timeout={500}>
@@ -55,7 +58,7 @@ export default function SearchBox() {
           />
         </IconButton>
         <IconButton
-          onClick={() => setShowSearchBox(false)}
+          onClick={() => dispatch(setShowSearchBox(false))}
           sx={{
             position: "absolute",
             top: 10,

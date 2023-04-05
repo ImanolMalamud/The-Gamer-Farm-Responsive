@@ -1,32 +1,31 @@
 import {
-  Box,
-  Button,
   Divider,
   Drawer,
-  IconButton,
   List,
   ListItemButton,
   ListItemText,
   styled,
 } from "@mui/material";
-import { useUIContext } from "../../context/ui";
 import CloseIcon from "@mui/icons-material/Close";
 import { DrawerCloseButton } from "../../styles/appbar";
 import { lighten } from "polished";
 import { Colors } from "../../styles/theme";
+import { useDispatch, useSelector } from "react-redux";
+import { setDrawerOpen } from "state";
 
 const MiddleDivider = styled((props) => (
   <Divider variant="middle" {...props} />
 ))``;
 
-
 export default function AppDrawer() {
-  const { drawerOpen, setDrawerOpen } = useUIContext();
+  const dispatch = useDispatch();
+
+  const drawerOpen = useSelector((state) => state.global.drawerOpen);
 
   return (
     <>
       {drawerOpen && (
-        <DrawerCloseButton onClick={() => setDrawerOpen(false)}>
+        <DrawerCloseButton onClick={() => dispatch(setDrawerOpen(false))}>
           <CloseIcon
             sx={{
               fontSize: "2.5rem",
@@ -35,7 +34,7 @@ export default function AppDrawer() {
           />
         </DrawerCloseButton>
       )}
-      <Drawer open={drawerOpen}>
+      <Drawer open={useSelector((state) => state.global.drawerOpen)}>
         <List>
           <ListItemButton>
             <ListItemText>Home</ListItemText>

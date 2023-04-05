@@ -1,13 +1,12 @@
-import { Box, Button, Typography, useMediaQuery } from "@mui/material";
-import { useTheme } from "@mui/system";
 import {
-  BannerContainer,
-  BannerContent,
-  BannerDescription,
-  BannerImage,
-  BannerShopButton,
-  BannerTitle,
-} from "../../styles/banner";
+  Box,
+  Button,
+  Container,
+  Typography,
+  useMediaQuery,
+} from "@mui/material";
+import { useTheme } from "@mui/system";
+
 import News from "components/news/News";
 import ResponsiveSlider from "components/news";
 import GamingNewsBtn from "components/news/GamingNewsBtn";
@@ -15,28 +14,37 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import backgroundBannerLight from "../../images/background-banner-light.jpg";
 import backgroundBannerDark from "../../images/background-banner-dark.webp";
-import { Image } from "@mui/icons-material";
+import AppDrawer from "components/drawer";
+import SearchBox from "components/search";
 
 export default function Banner() {
   const theme = useTheme();
 
   // Screen size
   const isMediumScreen = useMediaQuery("(max-width: 1050px)");
-  const isSmallScreen = useMediaQuery("(max-width: 768px)");
+  const isSmallScreen = useMediaQuery("(max-width: 900px)");
 
   const mode = useSelector((state) => state.global.mode);
 
   return (
-    <>
+    <Container
+      disableGutters
+      maxWidth="xl"
+      sx={{
+        background: theme.palette.primary[700],
+        color: theme.palette.primary[100],
+      }}
+    >
       <Box
         sx={{
           display: "flex",
           flexDirection: isSmallScreen ? "column" : "row",
           alignItems: "center",
           justifyContent: "center",
+          minHeight: "400px",
           height: isSmallScreen ? "contain" : "70vh",
           color: theme.palette.primary[100],
-          pb: "20px",
+          padding: "10px 0 20px 0",
           backgroundImage:
             mode === "light"
               ? `url(${backgroundBannerLight})`
@@ -101,7 +109,10 @@ export default function Banner() {
       <GamingNewsBtn />
 
       <ResponsiveSlider />
+
       {/* <News /> */}
-    </>
+      {isSmallScreen && <AppDrawer />}
+      <SearchBox />
+    </Container>
   );
 }

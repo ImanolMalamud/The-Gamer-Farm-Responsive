@@ -27,20 +27,21 @@ import Products from "components/products";
 function App() {
   const mode = useSelector((state) => state.global.mode);
   const theme = useMemo(() => createTheme(themeSettings(mode)), [mode]);
+
   return (
     <BrowserRouter>
-      <UIProvider>
-        <ThemeProvider theme={theme}>
-          <CssBaseline />
-          <Routes>
-            {/** Layout contains the Navbar and Sidebar. It will always render in our App. The components contained in the parent's route -in this case, with Layout element)- will be used in the Layout component as an Outlet component. */}
-            <Route element={<Layout />}>
-              <Route exact path="/" element={<Banner />} />
-              <Route path="/products" element={<Products />} />
-            </Route>
-          </Routes>
-        </ThemeProvider>
-      </UIProvider>
+      {/* <UIProvider> */}
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Routes>
+          {/** Layout contains the Navbar and Sidebar. It will always render in our App. The components contained in the parent's route -in this case, with Layout element)- will be used in the Layout component as an Outlet component. */}
+          <Route element={<Layout />}>
+            <Route exact path="/" element={<Banner />} />
+            <Route path="/products" element={<Products />} />
+          </Route>
+        </Routes>
+      </ThemeProvider>
+      {/* </UIProvider> */}
     </BrowserRouter>
   );
 }

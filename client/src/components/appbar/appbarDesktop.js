@@ -20,10 +20,12 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import SearchIcon from "@mui/icons-material/Search";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import Actions from "./actions";
-import { useUIContext } from "../../context/ui";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setShowSearchBox } from "state";
 export default function AppbarDesktop({ matches }) {
-  const { setShowSearchBox } = useUIContext();
+  const dispatch = useDispatch();
+
   const theme = useTheme();
 
   return (
@@ -88,7 +90,7 @@ export default function AppbarDesktop({ matches }) {
             </Link>
           }
         />
-        <ListItemButton onClick={() => setShowSearchBox(true)}>
+        <ListItemButton onClick={() => dispatch(setShowSearchBox(true))}>
           <ListItemIcon>
             <SearchIcon />
           </ListItemIcon>
