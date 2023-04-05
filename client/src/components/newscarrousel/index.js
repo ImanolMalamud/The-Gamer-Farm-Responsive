@@ -1,4 +1,3 @@
-import Carousel from "react-material-ui-carousel";
 import {
   Paper,
   Button,
@@ -10,10 +9,20 @@ import {
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useTheme } from "@mui/material/styles";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
+
+import "./style.css";
 
 import axios from "axios";
 
-function ResponsiveSlider(props) {
+function NewsCarrousel() {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down("md"));
   const [news, setNews] = useState([]);
@@ -44,45 +53,45 @@ function ResponsiveSlider(props) {
         };
       });
       // I will use only 13 news
-      setNews(data.slice(0, 13));
+      setNews(data.slice(0, 12));
     });
   }, []);
 
   return (
-    <Box
-      id="gaming-news-section"
-      display="flex"
-      justifyContent="center"
-      mb="25px"
-    >
-      <Carousel
-        sx={{
-          backgroundColor: theme.palette.primary[700],
+    <Box display="flex" justifyContent="center" mb="25px">
+      {/* <Swiper
+        slidesPerView={3}
+        spaceBetween={15}
+        slidesPerGroup={3}
+        loop={true}
+        loopFillGroupWithBlank={true}
+        pagination={{
+          clickable: true,
+        }}
+        navigation={true}
+        modules={[Pagination, Navigation]}
+        style={{
+          display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          width: "100%",
+          margin: "20px 20px 20px 20px",
         }}
-        stopAutoPlayOnHover={true}
-        interval={4000}
-        animation="slide"
-        duration={800}
-        swipe={true}
-        indicatorIconButtonProps={{
-          style: {
-            padding: "10px", // 1
-            color: theme.palette.secondary[500], // 3
-          },
-        }}
-        activeIndicatorIconButtonProps={{
-          style: {
-            backgroundColor: theme.palette.secondary[200], // 2
-          },
-        }}
+      > */}
+      <Swiper
+        modules={[Navigation, Pagination, Scrollbar, A11y]}
+        spaceBetween={20}
+        slidesPerView={matches ? 1 : 3}
+        slidesPerColumn={matches ? 1 : 3}
+        navigation
+        pagination={{ clickable: true }}
+        scrollbar={{ draggable: true }}
       >
         {news.map((item, i) => (
-          <Item key={i} item={item} />
+          <SwiperSlide>
+            <Item key={i} item={item} />
+          </SwiperSlide>
         ))}
-      </Carousel>
+      </Swiper>
     </Box>
   );
 }
@@ -91,7 +100,7 @@ function Item(props) {
   const theme = useTheme();
 
   return (
-    <Card>
+    <Box>
       <a
         className="CheckButton"
         href={props.item.link}
@@ -101,7 +110,7 @@ function Item(props) {
           backgroundColor: theme.palette.primary[700],
         }}
       >
-        <CardContent
+        <Box
           sx={{
             backgroundImage:
               props.item.imageUrl && `url(${props.item.imageUrl})`,
@@ -112,12 +121,16 @@ function Item(props) {
           <Typography
             variant="h4"
             component="h2"
-            gutterBottom
+            // gutterBottom
             sx={{
-              color: theme.palette.primary[800],
-              backgroundColor: theme.palette.primary[300],
+              color: theme.palette.primary[700],
+              backgroundColor: theme.palette.grey[300],
               textAlign: "center",
               padding: "2px",
+              opacity: 0.7,
+              ":hover": {
+                opacity: 0.9,
+              },
             }}
           >
             {props.item.title}
@@ -133,10 +146,10 @@ function Item(props) {
           >
             {props.item.pubDate}
           </p>
-        </CardContent>
+        </Box>
       </a>
-    </Card>
+    </Box>
   );
 }
 
-export default ResponsiveSlider;
+export default NewsCarrousel;

@@ -16,6 +16,7 @@ import backgroundBannerLight from "../../images/background-banner-light.jpg";
 import backgroundBannerDark from "../../images/background-banner-dark.webp";
 import AppDrawer from "components/drawer";
 import SearchBox from "components/search";
+import NewsCarrousel from "components/newscarrousel";
 
 export default function Banner() {
   const theme = useTheme();
@@ -27,14 +28,7 @@ export default function Banner() {
   const mode = useSelector((state) => state.global.mode);
 
   return (
-    <Container
-      disableGutters
-      maxWidth="xl"
-      sx={{
-        background: theme.palette.primary[700],
-        color: theme.palette.primary[100],
-      }}
-    >
+    <Container disableGutters maxWidth="xl">
       <Box
         sx={{
           display: "flex",
@@ -45,6 +39,7 @@ export default function Banner() {
           height: isSmallScreen ? "contain" : "70vh",
           color: theme.palette.primary[100],
           padding: "10px 0 20px 0",
+
           backgroundImage:
             mode === "light"
               ? `url(${backgroundBannerLight})`
@@ -108,7 +103,7 @@ export default function Banner() {
 
       <GamingNewsBtn />
 
-      <ResponsiveSlider />
+      <NewsCarrousel />
 
       {/* <News /> */}
       {isSmallScreen && <AppDrawer />}

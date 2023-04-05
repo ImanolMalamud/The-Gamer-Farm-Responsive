@@ -35,13 +35,16 @@ export default function AppbarDesktop({ matches }) {
         color: theme.palette.primary[100],
       }}
     >
-      <Box m="0 50px 0 10px">
-        <img
-          src="/images/navbar/logoGamingFarm.png"
-          alt="The Gamer Farm Logo"
-          style={{ width: "100px" }}
-        />
-      </Box>
+      <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
+        <Box m="0 50px 0 10px">
+          <img
+            src="/images/navbar/logoGamingFarm.png"
+            alt="The Gamer Farm Logo"
+            style={{ width: "100px" }}
+          />
+        </Box>
+      </Link>
+
       <MyList type="row">
         <ListItemText
           primary={
