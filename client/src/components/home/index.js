@@ -1,5 +1,4 @@
 import React, { useMemo } from "react";
-import Filters from "../filters";
 import SearchBox from "../search";
 import Products from "../products";
 import Footer from "../footer";

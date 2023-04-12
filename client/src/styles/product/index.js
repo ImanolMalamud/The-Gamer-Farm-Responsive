@@ -11,7 +11,7 @@ export const Product = styled(Box)(({ theme }) => ({
   alignItems: "center",
   flexDirection: "column",
   position: "relative",
-  boxShadow: `0 0 2px 1px ${theme.palette.secondary[600]}`,
+  // boxShadow: `0 0 2px 1px ${theme.palette.secondary[600]}`,
 }));
 
 export const ProductImage = styled("img")(({ src, theme }) => ({

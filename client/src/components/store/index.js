@@ -1,5 +1,6 @@
 import Categories from "components/categories";
 import Products from "components/products";
+import SortByPrice from "components/sortbyprice";
 import StoreHeader from "components/storeheader";
 import React from "react";
 import { useSelector } from "react-redux";
@@ -10,7 +11,11 @@ const Store = () => {
     <>
       {filter ? <StoreHeader /> : <Categories />}
 
-      {filter && <Products />}
+      {filter && (
+        <>
+          <Products />
+        </>
+      )}
     </>
   );
 };

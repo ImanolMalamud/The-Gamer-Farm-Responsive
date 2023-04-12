@@ -5,10 +5,14 @@ import { useTheme } from "@mui/material/styles";
 import { useMediaQuery } from "@mui/material";
 import SingleProductDesktop from "./SingleProductDesktop";
 import { products } from "data/productos.js";
+import { useSelector } from "react-redux";
 
 export default function Products() {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down("md"));
+  const filter = useSelector((state) => state.global.filter);
+
+  // let fiteredProducts = filter ? products.filter(product => product.)
 
   const renderProducts = products.map((product) => (
     <Box display="flex" flexDirection="column">
