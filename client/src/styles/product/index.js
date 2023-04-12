@@ -25,7 +25,7 @@ export const ProductImageContainer = styled(Box)(({ theme }) => ({
   width: "300px",
   height: "300px",
   padding: "10px",
-  background: `${alpha(theme.palette.grey[800], 0.5)}`,
+  background: `${alpha(theme.palette.tertiary[800], 0.4)}`,
   display: "flex",
   justifyContent: "center",
   alignItems: "center",

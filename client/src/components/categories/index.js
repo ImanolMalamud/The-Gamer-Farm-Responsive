@@ -36,7 +36,7 @@ const Categories = () => {
         alignItems={"center"}
         justifyContent={"space-around"}
         gap={"40px"}
-        bgcolor={alpha(theme.palette.tertiary[300], 0.5)}
+        bgcolor={alpha(theme.palette.tertiary[400], 0.5)}
         color={theme.palette.primary[100]}
         padding={"40px 20px 40px 20px"}
       >
