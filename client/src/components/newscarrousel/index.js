@@ -1,12 +1,4 @@
-import {
-  Paper,
-  Button,
-  Box,
-  useMediaQuery,
-  Card,
-  CardContent,
-  Typography,
-} from "@mui/material";
+import { Box, useMediaQuery, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useTheme } from "@mui/material/styles";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -58,25 +50,7 @@ function NewsCarrousel() {
   }, []);
 
   return (
-    <Box display="flex" justifyContent="center" mb="25px">
-      {/* <Swiper
-        slidesPerView={3}
-        spaceBetween={15}
-        slidesPerGroup={3}
-        loop={true}
-        loopFillGroupWithBlank={true}
-        pagination={{
-          clickable: true,
-        }}
-        navigation={true}
-        modules={[Pagination, Navigation]}
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          margin: "20px 20px 20px 20px",
-        }}
-      > */}
+    <Box display="flex" justifyContent="center">
       <Swiper
         modules={[Navigation, Pagination, Scrollbar, A11y]}
         spaceBetween={20}

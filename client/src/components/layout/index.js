@@ -19,7 +19,13 @@ const Layout = () => {
   const { data } = useGetUserQuery(userId);
 
   return (
-    <Box>
+    <Box
+      display="flex"
+      alignItems={"start"}
+      justifyContent={"start"}
+      mt={0}
+      paddingTop={0}
+    >
       <Box flexGrow={1}>
         <Appbar />
         <Box

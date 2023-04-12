@@ -1,6 +1,24 @@
-import { Typography } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import { Box, styled } from "@mui/system";
 import { Colors } from "../theme";
+import { alpha } from "@mui/material/styles";
+
+export const CategoryButton = styled(Button)(({ theme }) => ({
+  width: "300px",
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "center",
+  boxShadow: `0px 0px 2px 0.5px white`,
+  height: "100px",
+  backgroundColor: alpha(theme.palette.primary[800], 0.5),
+  color: theme.palette.primary[100],
+  ":hover": {
+    boxShadow: `0px 0px 5px 2px white`,
+    bgcolor: `${alpha(theme.palette.tertiary[500], 0.8)}`,
+    color: `white`,
+  },
+}));
 
 export const FiltersContainer = styled(Box)(({ theme }) => ({
   [theme.breakpoints.up("md")]: {

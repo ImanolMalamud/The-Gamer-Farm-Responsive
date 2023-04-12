@@ -26,7 +26,7 @@ export default function Banner() {
   const mode = useSelector((state) => state.global.mode);
 
   return (
-    <Container maxWidth="xl">
+    <Box>
       <Box
         sx={{
           display: "flex",
@@ -37,7 +37,7 @@ export default function Banner() {
           height: isSmallScreen ? "contain" : "70vh",
           color: theme.palette.primary[100],
           padding: "10px 0 20px 0",
-
+          width: "100vw",
           backgroundImage:
             mode === "light"
               ? `url(${backgroundBannerLight})`
@@ -106,6 +106,6 @@ export default function Banner() {
       {/* <News /> */}
       {isSmallScreen && <AppDrawer />}
       <SearchBox />
-    </Container>
+    </Box>
   );
 }

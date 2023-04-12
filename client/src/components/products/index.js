@@ -4,12 +4,13 @@ import SingleProduct from "./SingleProduct";
 import { useTheme } from "@mui/material/styles";
 import { useMediaQuery } from "@mui/material";
 import SingleProductDesktop from "./SingleProductDesktop";
+import { products } from "data/productos.js";
 
 export default function Products() {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down("md"));
 
-  const renderProducts = gameProducts.map((product) => (
+  const renderProducts = products.map((product) => (
     <Box display="flex" flexDirection="column">
       {matches ? (
         <SingleProduct product={product} matches={matches} />

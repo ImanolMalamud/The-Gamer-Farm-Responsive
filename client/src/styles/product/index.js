@@ -3,6 +3,7 @@ import { Button, IconButton } from "@mui/material";
 import { Box } from "@mui/system";
 import { slideInBottom, slideInRight } from "../../animation";
 import { Colors } from "../theme";
+import { alpha } from "@mui/material/styles";
 
 export const Product = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -10,6 +11,7 @@ export const Product = styled(Box)(({ theme }) => ({
   alignItems: "center",
   flexDirection: "column",
   position: "relative",
+  boxShadow: `0 0 2px 1px ${theme.palette.secondary[600]}`,
 }));
 
 export const ProductImage = styled("img")(({ src, theme }) => ({
@@ -23,7 +25,7 @@ export const ProductImageContainer = styled(Box)(({ theme }) => ({
   width: "300px",
   height: "300px",
   padding: "10px",
-  background: Colors.light_gray,
+  background: `${alpha(theme.palette.grey[800], 0.5)}`,
   display: "flex",
   justifyContent: "center",
   alignItems: "center",

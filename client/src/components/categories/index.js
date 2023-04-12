@@ -1,12 +1,15 @@
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, Button, Typography, useTheme } from "@mui/material";
+
 import { alpha } from "@mui/material/styles";
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import backgroundBannerLight from "../../images/background-banner-light.jpg";
 import backgroundBannerDark from "../../images/background-banner-dark.webp";
-import { Link } from "react-router-dom";
+import { CategoryButton } from "styles/filters";
+import { setFilter } from "state";
 
 const Categories = () => {
+  const dispatch = useDispatch();
   const theme = useTheme();
   const mode = useSelector((state) => state.global.mode);
   return (
@@ -38,76 +41,31 @@ const Categories = () => {
         padding={"40px 20px 40px 20px"}
       >
         {/* ---- CONSOLAS ----- */}
-        <Link
-          to="/products/consoles"
-          style={{ textDecoration: "none", color: "inherit" }}
+
+        <CategoryButton
+          onClick={() => dispatch(setFilter("CONSOLAS"))}
+          theme={theme}
         >
-          <Box
-            width={"300px"}
-            display={"flex"}
-            flexDirection={"column"}
-            alignItems={"center"}
-            justifyContent={"center"}
-            boxShadow={`0px 0px 2px 0.5px white`}
-            height={"100px"}
-            bgcolor={alpha(theme.palette.primary[800], 0.5)}
-            sx={{
-              // transition: "box-shadow 0.05s ease-in-out",
-              ":hover": {
-                boxShadow: `0px 0px 5px 2px white`,
-                //   boxShadow: `0px 0px 5px 2px ${theme.palette.secondary[500]}`,
-                bgcolor: `${alpha(theme.palette.tertiary[500], 0.8)}`,
-                color: `white`,
-              },
-            }}
-          >
-            <Typography variant="h2">CONSOLAS</Typography>
-          </Box>
-        </Link>
+          <Typography variant="h2">CONSOLAS</Typography>
+        </CategoryButton>
+
         {/* ---- MANDOS ----- */}
-        <Box
-          width={"300px"}
-          display={"flex"}
-          flexDirection={"column"}
-          alignItems={"center"}
-          justifyContent={"center"}
-          boxShadow={`0px 0px 2px 0.5px white`}
-          height={"100px"}
-          bgcolor={alpha(theme.palette.primary[800], 0.5)}
-          sx={{
-            // transition: "box-shadow 0.05s ease-in-out",
-            ":hover": {
-              boxShadow: `0px 0px 5px 2px white`,
-              //   boxShadow: `0px 0px 5px 2px ${theme.palette.secondary[500]}`,
-              bgcolor: `${alpha(theme.palette.tertiary[500], 0.8)}`,
-              color: `white`,
-            },
-          }}
+
+        <CategoryButton
+          onClick={() => dispatch(setFilter("MANDOS"))}
+          theme={theme}
         >
           <Typography variant="h2">MANDOS</Typography>
-        </Box>
-        {/* ---- CONSOLAS ----- */}
-        <Box
-          width={"300px"}
-          display={"flex"}
-          flexDirection={"column"}
-          alignItems={"center"}
-          justifyContent={"center"}
-          boxShadow={`0px 0px 2px 0.5px white`}
-          height={"100px"}
-          bgcolor={alpha(theme.palette.primary[800], 0.5)}
-          sx={{
-            // transition: "box-shadow 0.05s ease-in-out",
-            ":hover": {
-              boxShadow: `0px 0px 5px 2px white`,
-              //   boxShadow: `0px 0px 5px 2px ${theme.palette.secondary[500]}`,
-              bgcolor: `${alpha(theme.palette.tertiary[500], 0.8)}`,
-              color: `white`,
-            },
-          }}
+        </CategoryButton>
+
+        {/* ---- JUEGOS ----- */}
+
+        <CategoryButton
+          onClick={() => dispatch(setFilter("JUEGOS"))}
+          theme={theme}
         >
           <Typography variant="h2">JUEGOS</Typography>
-        </Box>
+        </CategoryButton>
       </Box>
     </Box>
   );

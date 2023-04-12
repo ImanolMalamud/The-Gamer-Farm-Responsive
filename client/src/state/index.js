@@ -5,6 +5,7 @@ const initialState = {
   userId: "63701cc1f03239c72c00017f",
   drawerOpen: false,
   showSearchBox: false,
+  filter: "",
 };
 
 export const globalSlice = createSlice({
@@ -20,9 +21,13 @@ export const globalSlice = createSlice({
     setShowSearchBox: (state, action) => {
       state.showSearchBox = action.payload;
     },
+    setFilter: (state, action) => {
+      state.filter = action.payload;
+    },
   },
 });
 
-export const { setMode, setDrawerOpen, setShowSearchBox } = globalSlice.actions;
+export const { setMode, setDrawerOpen, setShowSearchBox, setFilter } =
+  globalSlice.actions;
 
 export default globalSlice.reducer;

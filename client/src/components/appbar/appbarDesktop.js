@@ -33,6 +33,7 @@ export default function AppbarDesktop({ matches }) {
       sx={{
         backgroundColor: theme.palette.primary[800],
         color: theme.palette.primary[100],
+        mt: "0",
       }}
     >
       <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
@@ -53,20 +54,10 @@ export default function AppbarDesktop({ matches }) {
             </Link>
           }
         />
-        {/* <ListItemText
-          primary={
-            <Link
-              to="/categories"
-              style={{ textDecoration: "none", color: "inherit" }}
-            >
-              Categories
-            </Link>
-          }
-        /> */}
         <ListItemText
           primary={
             <Link
-              to="/products"
+              to="/store"
               style={{ textDecoration: "none", color: "inherit" }}
             >
               Productos
