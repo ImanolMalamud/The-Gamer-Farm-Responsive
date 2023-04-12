@@ -23,6 +23,7 @@ import Actions from "./actions";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setShowSearchBox } from "state";
+import { alpha } from "@mui/material";
 export default function AppbarDesktop({ matches }) {
   const dispatch = useDispatch();
 
@@ -31,7 +32,7 @@ export default function AppbarDesktop({ matches }) {
   return (
     <AppbarContainer
       sx={{
-        backgroundColor: theme.palette.primary[800],
+        backgroundColor: alpha(theme.palette.primary[800], 0.9),
         color: theme.palette.primary[100],
         mt: "0",
       }}

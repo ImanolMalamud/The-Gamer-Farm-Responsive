@@ -1,23 +1,29 @@
 import { Box, Button, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { Colors } from "../theme";
+import backgroundBannerLight from "../../images/background-banner-light.jpg";
+import backgroundBannerDark from "../../images/background-banner-dark.webp";
 
-export const BannerContainer = styled(Box)(({ matches, theme }) => ({
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  width: "100%",
-  height: "70vh",
-  padding: "0px 0px",
-  background: Colors.light_gray,
-  [theme.breakpoints.down("sm")]: {
-    flexDirection: "column",
+export const BannerContainer = styled(Box)(
+  ({ mode, theme, isSmallScreen }) => ({
+    display: "flex",
+    flexDirection: isSmallScreen ? "column" : "row",
     alignItems: "center",
-  },
-  // backgroundImage: `url(/images/banner/banner.png)`,
-  // backgroundRepeat: "no-repeat",
-  // backgroundPosition: "center",
-}));
+    justifyContent: "center",
+    minHeight: "400px",
+    height: isSmallScreen ? "contain" : "70vh",
+    color: theme.palette.primary[100],
+    padding: "10px 0 20px 0",
+    width: "100vw",
+    backgroundImage:
+      mode === "light"
+        ? `url(${backgroundBannerLight})`
+        : `url(${backgroundBannerDark})`,
+    backgroundSize: "cover",
+    backgroundPositionX: "center",
+    backgroundRepeat: "no-repeat",
+  })
+);
 
 export const BannerContent = styled(Box)(() => ({
   display: "flex",
@@ -27,57 +33,29 @@ export const BannerContent = styled(Box)(() => ({
   padding: "30px",
 }));
 
-export const BannerImage = styled("img")(({ src, theme }) => ({
-  src: `url(${src})`,
-  width: "500px",
-  height: "380px",
-  [theme.breakpoints.down("md")]: {
-    // width: "350px",
-  },
-  [theme.breakpoints.down("sm")]: {
-    // width: "320px",
-    // height: "300px",
-  },
+export const BannerText = styled(Box)(() => ({
+  maxHeight: "80%",
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "center",
+  textAlign: "center",
+  rowGap: "25px",
+  padding: "0 20px 0 20px",
 }));
 
-export const BannerTitle = styled(Typography)(({ matches, theme }) => ({
-  lineHeight: 1.5,
-  fontSize: "90px",
-  marginBottom: "20px",
-  [theme.breakpoints.down("sm")]: {
-    fontSize: "42px",
-  },
-}));
-
-export const BannerDescription = styled(Typography)(({ theme }) => ({
-  lineHeight: 1.25,
-  letterSpacing: 1.25,
-  marginBottom: "3em",
-  [theme.breakpoints.down("md")]: {
-    lineHeight: 1.15,
-    letterSpacing: 1.15,
-    marginBottom: "1.5em",
-  },
-}));
-
-export const BannerShopButton = styled(Button, {
-  // Configure which props should be forwarded on DOM
-  shouldForwardProp: (prop) => prop !== "color",
-  name: "MyShopButton",
-  slot: "Root",
-  // We are specifying here how the styleOverrides are being applied based on props
-  overridesResolver: (props, styles) => [
-    styles.root,
-    props.color === "primary" && styles.primary,
-    props.color === "secondary" && styles.secondary,
-  ],
-})(({ theme }) => ({
+export const BannerProductsButton = styled(Button)(({ theme }) => ({
   padding: "20px 0px",
-  color: Colors.white,
+  color: theme.palette.grey[100],
   fontWeight: "bold",
   fontSize: "20px",
+  width: "300px",
   [theme.breakpoints.down("sm")]: {
     padding: "10px 0px",
     fontSize: "14px",
+  },
+  backgroundColor: theme.palette.secondary[400],
+  "&:hover": {
+    backgroundColor: theme.palette.secondary[700],
   },
 }));

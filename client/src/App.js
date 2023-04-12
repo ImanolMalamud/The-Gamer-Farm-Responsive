@@ -44,7 +44,7 @@ function App() {
           <Routes>
             {/** Layout contains the Navbar and Sidebar. It will always render in our App. The components contained in the parent's route -in this case, with Layout element)- will be used in the Layout component as an Outlet component. */}
             <Route element={<Layout />}>
-              <Route exact path="/" element={<Banner />} />
+              <Route exact path="/" element={<Home />} />
               <Route path="/store" element={<Store />} />
             </Route>
           </Routes>
