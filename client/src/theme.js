@@ -39,27 +39,38 @@ export const tokensDark = {
     800: "#2f0066",
     900: "#180033",
   },
-}
+  tertiary: {
+    100: "#ddedfd",
+    200: "#bbdbfa",
+    300: "#9ac9f8",
+    400: "#78b7f5",
+    500: "#56a5f3",
+    600: "#4584c2",
+    700: "#346392",
+    800: "#224261",
+    900: "#112131",
+  },
+};
 
 // function that reverses the color palette
 function reverseTokens(tokensDark) {
-  const reversedTokens = {}
+  const reversedTokens = {};
   Object.entries(tokensDark).forEach(([key, val]) => {
-    const keys = Object.keys(val)
-    const values = Object.values(val)
-    const length = keys.length
-    const reversedObj = {}
+    const keys = Object.keys(val);
+    const values = Object.values(val);
+    const length = keys.length;
+    const reversedObj = {};
     for (let i = 0; i < length; i++) {
-      reversedObj[keys[i]] = values[length - i - 1]
+      reversedObj[keys[i]] = values[length - i - 1];
     }
-    reversedTokens[key] = reversedObj
-  })
-  return reversedTokens
+    reversedTokens[key] = reversedObj;
+  });
+  return reversedTokens;
 }
-export const tokensLight = reverseTokens(tokensDark)
+export const tokensLight = reverseTokens(tokensDark);
 
 // mui theme settings
-export const themeSettings = mode => {
+export const themeSettings = (mode) => {
   return {
     palette: {
       mode: mode,
@@ -74,6 +85,10 @@ export const themeSettings = mode => {
             secondary: {
               ...tokensDark.secondary,
               main: tokensDark.secondary[300],
+            },
+            tertiary: {
+              ...tokensDark.tertiary,
+              main: tokensDark.tertiary[400],
             },
             neutral: {
               ...tokensDark.grey,
@@ -95,6 +110,10 @@ export const themeSettings = mode => {
               ...tokensLight.secondary,
               main: tokensDark.secondary[600],
               light: tokensDark.secondary[700],
+            },
+            tertiary: {
+              ...tokensDark.tertiary,
+              main: tokensDark.tertiary[800],
             },
             neutral: {
               ...tokensLight.grey,
@@ -134,5 +153,5 @@ export const themeSettings = mode => {
         fontSize: 14,
       },
     },
-  }
-}
+  };
+};

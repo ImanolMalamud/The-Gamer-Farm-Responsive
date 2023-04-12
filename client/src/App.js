@@ -27,6 +27,8 @@ import Products from "components/products";
 import "./App.css";
 import AppDrawer from "components/drawer";
 import SearchBox from "components/search";
+import Categories from "components/categories";
+import Store from "components/store";
 
 function App() {
   const mode = useSelector((state) => state.global.mode);
@@ -35,6 +37,7 @@ function App() {
 
   return (
     <Box className="app">
+      <CssBaseline />
       <BrowserRouter>
         <ThemeProvider theme={theme}>
           <CssBaseline />
@@ -42,7 +45,7 @@ function App() {
             {/** Layout contains the Navbar and Sidebar. It will always render in our App. The components contained in the parent's route -in this case, with Layout element)- will be used in the Layout component as an Outlet component. */}
             <Route element={<Layout />}>
               <Route exact path="/" element={<Banner />} />
-              <Route path="/products" element={<Products />} />
+              <Route path="/store" element={<Store />} />
             </Route>
           </Routes>
           {isSmallScreen && <AppDrawer />}

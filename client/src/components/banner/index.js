@@ -7,8 +7,6 @@ import {
 } from "@mui/material";
 import { useTheme } from "@mui/system";
 
-import News from "components/news/News";
-import ResponsiveSlider from "components/news";
 import GamingNewsBtn from "components/news/GamingNewsBtn";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -28,7 +26,7 @@ export default function Banner() {
   const mode = useSelector((state) => state.global.mode);
 
   return (
-    <Container disableGutters maxWidth="xl">
+    <Container maxWidth="xl">
       <Box
         sx={{
           display: "flex",
@@ -74,30 +72,30 @@ export default function Banner() {
             completo de las consolas más icónicas de las últimas décadas e
             informarte de las novedades relacionadas al Mundo Gamer”
           </Typography>
-          <Button
-            sx={{
-              padding: "20px 0px",
-              color: theme.palette.grey[100],
-              fontWeight: "bold",
-              fontSize: "20px",
-              width: "300px",
-              [theme.breakpoints.down("sm")]: {
-                padding: "10px 0px",
-                fontSize: "14px",
-              },
-              backgroundColor: theme.palette.secondary[400],
-              "&:hover": {
-                backgroundColor: theme.palette.secondary[700],
-              },
-            }}
+          <Link
+            to="/store"
+            style={{ textDecoration: "none", color: "inherit" }}
           >
-            <Link
-              to="/products"
-              style={{ textDecoration: "none", color: "inherit" }}
+            <Button
+              sx={{
+                padding: "20px 0px",
+                color: theme.palette.grey[100],
+                fontWeight: "bold",
+                fontSize: "20px",
+                width: "300px",
+                [theme.breakpoints.down("sm")]: {
+                  padding: "10px 0px",
+                  fontSize: "14px",
+                },
+                backgroundColor: theme.palette.secondary[400],
+                "&:hover": {
+                  backgroundColor: theme.palette.secondary[700],
+                },
+              }}
             >
               Productos
-            </Link>
-          </Button>
+            </Button>
+          </Link>
         </Box>
       </Box>
 
